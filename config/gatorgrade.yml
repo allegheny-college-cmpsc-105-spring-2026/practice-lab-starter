@@ -1,0 +1,20 @@
+setup: |
+  echo "Done installing project dependencies!"
+---
+
+# Reminder for ^^^:
+# All commands executed in the setup block are done in a
+# one-by-one fashion from the current working directory. This means
+# that there is no history associated with running the commands and
+# thus multiple commands must be run in a single chain.
+
+# perform checks on a file
+- practice.ipynb:
+    - description: Ensure that the ipynb file exists
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers in practice.ipynb
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
